@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+        stage('Front-end') {
+            steps {
+                echo 'ФИО: Ощепков Сергей Алексеевич'
+                script {
+                    docker.image('node:24-alpine').inside {
+                        sh 'node -v'
+                    }
+                }
+            }
+        }
+        stage('Back-end') {
+            steps {
+                echo 'ФИО: Ощепков Сергей Алексеевич'
+                script {
+                    docker.image('maven:3.9-eclipse-temurin-17').inside {
+                        sh 'mvn -v'
+                    }
+                }
+            }
+        }
+    }
+}
